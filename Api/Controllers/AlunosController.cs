@@ -6,6 +6,7 @@ namespace Api.Controllers;
 [Route("api/[controller]")]
 public class AlunosController : ControllerBase
 {
+    // GET: api/alunos
     [HttpGet]
     public IActionResult Get()
     {
@@ -34,6 +35,7 @@ public class AlunosController : ControllerBase
         return Ok(alunos);
     }
 
+    // GET: api/alunos/1
     [HttpGet("{id:int}")]
     public IActionResult GetById(int id)
     {
@@ -41,10 +43,11 @@ public class AlunosController : ControllerBase
         {
             Id = id,
             Nome = "Aluno Teste",
-            Curso = "ASP.NET Core"
+            Curso = "ASP.NET Core 10"
         });
     }
 
+    // POST: api/alunos
     [HttpPost]
     public IActionResult Create([FromBody] NovoAlunoRequest request)
     {
@@ -57,6 +60,28 @@ public class AlunosController : ControllerBase
                 request.Nome,
                 request.Curso
             });
+    }
+
+    // PUT: api/alunos/1
+    [HttpPut("{id:int}")]
+    public IActionResult Update(
+        int id,
+        [FromBody] NovoAlunoRequest request)
+    {
+        return Ok(new
+        {
+            Id = id,
+            request.Nome,
+            request.Curso,
+            Mensagem = "Aluno atualizado com sucesso."
+        });
+    }
+
+    // DELETE: api/alunos/1
+    [HttpDelete("{id:int}")]
+    public IActionResult Delete(int id)
+    {
+        return NoContent();
     }
 }
 
