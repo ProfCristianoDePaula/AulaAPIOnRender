@@ -85,7 +85,6 @@ public class AlunosController : ControllerBase
     }
 }
 
-
 public record NovoAlunoRequest(
     string Nome,
     string Curso
