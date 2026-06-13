@@ -6,7 +6,7 @@ builder.Services.AddOpenApi();
 
 // Configurar o servidor para escutar na porta definida pela variável de ambiente "PORT" ou na porta 8080 por padrão
 builder.WebHost.UseUrls(
- $"http://0.0.0.0:{Environment.GetEnvironmentVariable("PORT") ?? "8080"}"
+ $"http://*:{Environment.GetEnvironmentVariable("PORT") ?? "8080"}"
 );
 
 builder.Services.AddControllers();
